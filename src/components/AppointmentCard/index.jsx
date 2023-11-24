@@ -9,39 +9,43 @@ import {
     Heading,
 } from '@chakra-ui/react'
 
-const AppointmentCard = () => {
+const AppointmentCard = ({
+    customer,
+    doctorName,
+    service,
+    appointmentTime,
+}) => {
     return (
         <Card border={`1px solid black`}>
             <CardHeader>
-                <Heading size="md">Client Report</Heading>
+                <Heading size="md">Appointment</Heading>
             </CardHeader>
 
             <CardBody>
                 <Stack divider={<StackDivider />} spacing="4">
                     <Box>
                         <Heading size="xs" textTransform="uppercase">
-                            Summary
+                            Customer Detail
+                        </Heading>
+                        <Box>Name: {customer.name}</Box>
+                        <Box>Email: {customer.email}</Box>
+                    </Box>
+                    <Box>
+                        <Heading size="xs" textTransform="uppercase">
+                            Doctor
                         </Heading>
                         <Text pt="2" fontSize="sm">
-                            View a summary of all your clients over the last
-                            month.
+                            {doctorName}
                         </Text>
                     </Box>
                     <Box>
                         <Heading size="xs" textTransform="uppercase">
-                            Overview
+                            Appointment Detail
                         </Heading>
                         <Text pt="2" fontSize="sm">
-                            Check out the overview of your clients.
-                        </Text>
-                    </Box>
-                    <Box>
-                        <Heading size="xs" textTransform="uppercase">
-                            Analysis
-                        </Heading>
-                        <Text pt="2" fontSize="sm">
-                            See a detailed analysis of all your business
-                            clients.
+                            {`Appointment Time: ${new Date(
+                                appointmentTime
+                            ).toLocaleString()}, Service: ${service}`}
                         </Text>
                     </Box>
                 </Stack>
